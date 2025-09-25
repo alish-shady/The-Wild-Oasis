@@ -66,17 +66,27 @@ You need to have [Node.js](https://nodejs.org/) and
     ```sh
     npm install
     ```
-3.  Set up your Supabase backend. You will need to create a new project on
-    [Supabase](https://supabase.io/) and get your project URL and anon key.
-4.  Create a `.env` file in the root of your project and add your Supabase
-    credentials:
+3.  **Set up Supabase**
+
+    - You will need to create a new project on [Supabase](https://supabase.io/)
+      to get your project URL and anon key.
+    - Navigate to the `src/services/supabase.js` file (or wherever your Supabase
+      client is initialized).
+    - Replace the placeholder values with your actual Supabase URL and key.
+
+    ```javascript
+    // Example from src/services/supabase.js
+
+    import { createClient } from "@supabase/supabase-js";
+    export const supabaseUrl = "YOUR_SUPABASE_URL";
+    const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    export default supabase;
     ```
-    VITE_SUPABASE_URL="YOUR_SUPABASE_URL"
-    VITE_SUPABASE_KEY="YOUR_SUPABASE_ANON_KEY"
-    ```
-5.  In your Supabase project, you'll need to create the necessary tables and
-    relationships. You can find the schema in the course materials or by
-    inspecting the code.
+
+    - In your Supabase project, you'll also need to create the necessary tables
+      and relationships as shown in the course.
 
 ### Usage
 
